@@ -1,0 +1,138 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.led.home.ledcontroller.LedControllerActivity">
+
+    <LinearLayout
+        android:id="@+id/fullscreen_content_controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+            <Button
+                android:id="@+id/red_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/red"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+
+            <Button
+                android:id="@+id/blue_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/blue"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+            <Button
+                android:id="@+id/green_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/green"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+
+            <Button
+                android:id="@+id/yellow_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/yellow"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+            <Button
+                android:id="@+id/purple_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/purple"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+
+            <Button
+                android:id="@+id/pink_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/pink"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+            <Button
+                android:id="@+id/orange_button"
+                style="?android:buttonBarButtonStyle"
+                android:background="@color/orange"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:onClick="setColor">
+            </Button>
+
+            <ImageButton
+                android:id="@+id/free_button"
+                style="?android:buttonBarButtonStyle"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:src="@drawable/led"
+                android:scaleType="fitCenter"
+                android:onClick="setColor"
+                android:contentDescription="Select a custom color for your app">
+            </ImageButton>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,99 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.led.home.ledcontroller.CustomColorActivity">
+
+    <LinearLayout
+        android:id="@+id/fullscreen_content_controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            style="?android:buttonBarStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/hue"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <SeekBar
+                android:id="@+id/hue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:progress="0"
+                android:max="255"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            style="?android:buttonBarStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/saturation"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <SeekBar
+                android:id="@+id/saturation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:progress="255"
+                android:max="255"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            style="?android:buttonBarStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/value"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <SeekBar
+                android:id="@+id/value"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:progress="255"
+                android:max="255"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/finalcolor"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+            style="?android:buttonBarStyle">
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
