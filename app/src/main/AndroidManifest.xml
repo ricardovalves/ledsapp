@@ -12,18 +12,13 @@
         android:icon="@mipmap/led_app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".LedControllerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
@@ -33,10 +28,24 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_custom_color"
             android:parentActivityName=".LedControllerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.led.home.ledcontroller.LedControllerActivity" />
+        </activity>
+        <!-- Splash Screen -->
+        <activity
+            android:name="com.led.home.splashscreen.SplashScreen"
+            android:label="@string/title_activity_splash_screen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
     </application>
 

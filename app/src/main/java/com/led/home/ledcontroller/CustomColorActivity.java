@@ -1,11 +1,13 @@
 package com.led.home.ledcontroller;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.led.home.db.ColorReaderDbHelper;
+import com.led.home.exceptions.DBException;
 import com.led.home.exceptions.DisconnectedClientException;
 import com.led.home.exceptions.PublishException;
 
@@ -20,6 +22,8 @@ public class CustomColorActivity extends BaseActivity {
     private int valueValue = 255;
 
     private LinearLayout finalColor;
+    private String colorRepresentation;
+    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +107,9 @@ public class CustomColorActivity extends BaseActivity {
             seekBarSaturation/100,
             seekBarValue/100
         };
-        finalColor.setBackgroundColor(Color.HSVToColor(hsvColor));
+
+        color = android.graphics.Color.HSVToColor(hsvColor);
+        finalColor.setBackgroundColor(color);
         if(client == null) {
             this.startClient();
         }
@@ -112,7 +118,7 @@ public class CustomColorActivity extends BaseActivity {
         String fastLedHue = Integer.toHexString(hue);
         String fastLedSaturation = Integer.toHexString(saturation);
         String fastLedValue = Integer.toHexString(value);
-
+        colorRepresentation = fastLedHue+fastLedSaturation+fastLedValue;
         if(client != null) {
             try {
                 client.publish(fastLedHue + fastLedSaturation + fastLedValue);
@@ -126,6 +132,16 @@ public class CustomColorActivity extends BaseActivity {
         } else {
             Toast.makeText(getApplicationContext(), "There seems to be an issue with your MQTT connection",
                     Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void addColor(View v) {
+        try {
+            ColorReaderDbHelper.getInstance(this).addColor(new com.led.home.db.Color(
+                    color, colorRepresentation, false));
+            Toast.makeText(getApplicationContext(), "Color added", Toast.LENGTH_LONG).show();
+        } catch (DBException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

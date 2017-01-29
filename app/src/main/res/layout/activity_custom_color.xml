@@ -92,7 +92,8 @@
             android:orientation="vertical"
             android:layout_margin="20dp"
             android:background="@color/white"
-            style="?android:buttonBarStyle">
+            style="?android:buttonBarStyle"
+            android:onClick="addColor">>
         </LinearLayout>
 
     </LinearLayout>

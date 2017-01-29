@@ -3,23 +3,22 @@ package com.led.home.ledcontroller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.Toast;
 
+import com.led.home.db.Color;
+import com.led.home.db.ColorReaderDbHelper;
+import com.led.home.exceptions.DBException;
 import com.led.home.exceptions.DisconnectedClientException;
 import com.led.home.exceptions.MQTTConnectException;
 import com.led.home.exceptions.PublishException;
 import com.led.home.mq.MessageQueueClient;
 
-public class LedControllerActivity extends BaseActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    // color definition
-    private static final String red = "00bdf5";
-    private static final String green = "5ac7bf";
-    private static final String blue = "81c7bf";
-    private static final String pink = "d7c7bf";
-    private static final String purple = "c166f2";
-    private static final String yellow = "2cddd6";
-    private static final String orange = "19e8f4";
+public class LedControllerActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,33 +33,47 @@ public class LedControllerActivity extends BaseActivity {
         }
     }
 
-    public void setColor(View v) {
-        switch(v.getId()) {
-            case R.id.red_button:
-                setColor(red);
-                break;
-            case R.id.blue_button:
-                setColor(blue);
-                break;
-            case R.id.yellow_button:
-                setColor(yellow);
-                break;
-            case R.id.green_button:
-                setColor(green);
-                break;
-            case R.id.orange_button:
-                setColor(orange);
-                break;
-            case R.id.purple_button:
-                setColor(purple);
-                break;
-            case R.id.pink_button:
-                setColor(pink);
-                break;
-            default:
-                startCustomColorActivity();
-                break;
-        }
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        final GridView gridview = (GridView) findViewById(R.id.fullscreen_content_controls);
+
+        ColorReaderDbHelper db = ColorReaderDbHelper.getInstance(this);
+
+        List<Color> colors = new ArrayList<Color>();
+
+        final ColorAdapter colorAdapter = new ColorAdapter(this);
+        colorAdapter.init();
+
+        gridview.setAdapter(colorAdapter);
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Color color = (Color)parent.getItemAtPosition(position);
+                setColor(color.getColorRepresentation());
+            }
+        });
+
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    Color color = (Color)parent.getItemAtPosition(position);
+                    if(!color.getIsDefaultColor()) {
+                        ColorReaderDbHelper.getInstance(getApplicationContext()).deleteColor(color.getId());
+                        colorAdapter.init();
+                        colorAdapter.notifyDataSetChanged();
+                        gridview.setAdapter(colorAdapter);
+                    }
+                } catch (DBException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                return true;
+            }
+        });
     }
 
     public void setColor(String color) {
@@ -79,7 +92,7 @@ public class LedControllerActivity extends BaseActivity {
         }
     }
 
-    public void startCustomColorActivity() {
+    public void startCustomColorActivity(View v) {
         Intent intent = new Intent(this, CustomColorActivity.class);
         startActivity(intent);
     }

@@ -1,138 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context="com.led.home.ledcontroller.LedControllerActivity">
+    android:background="#ffffff">
 
-    <LinearLayout
+    <GridView
         android:id="@+id/fullscreen_content_controls"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@color/white"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:padding="10dp"
+        android:clipToPadding="false"
+        android:stretchMode="columnWidth"
+        android:gravity="center"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            style="?android:buttonBarStyle">
-            <Button
-                android:id="@+id/red_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/red"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:onClick="startCustomColorActivity"
+        app:layout_anchor="@id/fullscreen_content_controls"
+        app:layout_anchorGravity="bottom|right|end"/>
 
-            <Button
-                android:id="@+id/blue_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/blue"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            style="?android:buttonBarStyle">
-            <Button
-                android:id="@+id/green_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/green"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-
-            <Button
-                android:id="@+id/yellow_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/yellow"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            style="?android:buttonBarStyle">
-            <Button
-                android:id="@+id/purple_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/purple"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-
-            <Button
-                android:id="@+id/pink_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/pink"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            style="?android:buttonBarStyle">
-            <Button
-                android:id="@+id/orange_button"
-                style="?android:buttonBarButtonStyle"
-                android:background="@color/orange"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:onClick="setColor">
-            </Button>
-
-            <ImageButton
-                android:id="@+id/free_button"
-                style="?android:buttonBarButtonStyle"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:src="@drawable/led"
-                android:scaleType="fitCenter"
-                android:onClick="setColor"
-                android:contentDescription="Select a custom color for your app">
-            </ImageButton>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

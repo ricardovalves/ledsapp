@@ -7,7 +7,7 @@ import com.led.home.exceptions.MQTTConnectException;
 import com.led.home.mq.MessageQueueClient;
 
 
-public class BaseActivity  extends AppCompatActivity {
+public abstract class BaseActivity  extends AppCompatActivity {
 
     protected MessageQueueClient client;
 
@@ -53,4 +53,5 @@ public class BaseActivity  extends AppCompatActivity {
             }
         }
     }
+
 }

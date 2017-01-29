@@ -6,4 +6,5 @@
     <string name="value">Value</string>
 
     <string name="title_activity_custom_color">Pick a Color</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 </resources>
